@@ -16,6 +16,7 @@ def caffe_post():
     score_receive = request.form['score_give']
     add_receive = request.form['add_give']
     add_num = request.form['num_give']
+    comment_num = request.form['comment_give']
 #
 #     # 일단 망고 플레이트- 필터 - 서울(강남) - 카페에 있는 걸 몽고 db에 직접 추가, 연결 완료, 각 개체 받는 것까지만 완료.
 #     # 카페의 db 경로는 collection name = caffe / 서울은 caffe / 경기는 Gyeonggi
@@ -26,6 +27,7 @@ def Gyeonggi_post():
     score_receive = request.form['score_give']
     add_receive = request.form['add_give']
     add_num = request.form['num_give']
+    comment_num = request.form['comment_give']
 
 @app.route('/')
 def main():
