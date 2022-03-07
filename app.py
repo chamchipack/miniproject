@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://test:sparta@cluster0.ikzrb.mongodb.net/Cluster0?retryWrites=true&w=majority')
-db = client.caffe
+db = client.dbsparta
 
 @app.route('/')
 def home():
@@ -15,6 +15,7 @@ def home():
 @app.route("/caffe", methods=["GET"])
 def caffe_get():
     caffe_list = list(db.caffe.find({}, {'_id': False}))
+    print(caffe_list)
     return jsonify({'Seoul':caffe_list})
 
 

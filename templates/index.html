@@ -21,8 +21,9 @@
                 url: "/caffe",
                 data: {},
                 success: function (response) {
+                    console.log(response)
                     let rows = response['Seoul']
-                    for (let  i = 0; i < rows.length; i++) {
+                    for (let i = 0; i < rows.length; i++) {
                         let name = rows[i]['name']
                         let score = rows[i]['score']
                         let add = rows[i]['add']
@@ -41,8 +42,7 @@
                         $('#cards-box').append(temp_html)
                     }
                 }
-            })
-
+            });
         }
         $(document).ready(function () {
             lasting();
@@ -170,7 +170,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaX2DUOsz8ZnsMiGZw8h8RyuUbCelNiJvWMTyOGaMjYrupt9Kq8fxtwm_iXcvTdSoURo&usqp=CAU"
                          class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h4 class="card-text">{{ name }}</h4>
+                        <h4 class="card-text">카페이름</h4>
                         <p class="card-text">경기도 성남시 분당구 어디</p>
                         <p class="card-text">여기 분위기 개좋음</p>
                     </div>
