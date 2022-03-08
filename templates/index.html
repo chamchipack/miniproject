@@ -12,39 +12,6 @@
     <title>Title</title>
     <script>
         $(document).ready(function () {
-            listing();
-        });
-
-        function listing() {
-            $.ajax({
-                type: "GET",
-                url: "/caffe",
-                data: {},
-                success: function (response) {
-                    console.log(response)
-                    let rows = response['Seoul']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let score = rows[i]['score']
-                        let add = rows[i]['add']
-                        let comment = rows[i]['comment']
-                        let img = rows[i]['img']
-
-                        let temp_html = `<div class="card">
-                                            <img src=${img}
-                                                 class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h4 class="card-text">${name}</h4>
-                                                <p class="card-text">${add}</p>
-                                                <p class="card-text">${comment}</p>
-                                            </div>
-                                           </div>`
-                        $('#cards-box').append(temp_html)
-                    }
-                }
-            });
-        }
-        $(document).ready(function () {
             lasting();
         });
 
@@ -166,61 +133,17 @@
     <div class="bottom-box">
         <div class="bottom-box-inner">
             <div class="row row-cols-1 row-cols-md-4 g-1" id="cards-box">
+                {% for cafe in caffe_list %}
                 <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaX2DUOsz8ZnsMiGZw8h8RyuUbCelNiJvWMTyOGaMjYrupt9Kq8fxtwm_iXcvTdSoURo&usqp=CAU"
+                    <img src={{ cafe.img }}
                          class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h4 class="card-text">카페이름</h4>
-                        <p class="card-text">경기도 성남시 분당구 어디</p>
-                        <p class="card-text">여기 분위기 개좋음</p>
+                        <h4 class="card-text">{{ cafe.name }}</h4>
+                        <p class="card-text">{{ cafe.add }}</p>
+                        <p class="card-text">{{ cafe.comment }}</p>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaX2DUOsz8ZnsMiGZw8h8RyuUbCelNiJvWMTyOGaMjYrupt9Kq8fxtwm_iXcvTdSoURo&usqp=CAU"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-text">카페이름</h4>
-                        <p class="card-text">경기도 성남시 분당구 어디</p>
-                        <p class="card-text">여기 분위기 개좋음</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaX2DUOsz8ZnsMiGZw8h8RyuUbCelNiJvWMTyOGaMjYrupt9Kq8fxtwm_iXcvTdSoURo&usqp=CAU"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-text">카페이름</h4>
-                        <p class="card-text">경기도 성남시 분당구 어디</p>
-                        <p class="card-text">여기 분위기 개좋음</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaX2DUOsz8ZnsMiGZw8h8RyuUbCelNiJvWMTyOGaMjYrupt9Kq8fxtwm_iXcvTdSoURo&usqp=CAU"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-text">카페이름</h4>
-                        <p class="card-text">경기도 성남시 분당구 어디</p>
-                        <p class="card-text">여기 분위기 개좋음</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaX2DUOsz8ZnsMiGZw8h8RyuUbCelNiJvWMTyOGaMjYrupt9Kq8fxtwm_iXcvTdSoURo&usqp=CAU"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-text">카페이름</h4>
-                        <p class="card-text">경기도 성남시 분당구 어디</p>
-                        <p class="card-text">여기 분위기 개좋음</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaX2DUOsz8ZnsMiGZw8h8RyuUbCelNiJvWMTyOGaMjYrupt9Kq8fxtwm_iXcvTdSoURo&usqp=CAU"
-                         class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class="card-text">카페이름</h4>
-                        <p class="card-text">경기도 성남시 분당구 어디</p>
-                        <p class="card-text">여기 분위기 개좋음</p>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>

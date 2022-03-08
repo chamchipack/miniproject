@@ -10,7 +10,10 @@ db = client.dbsparta
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    #
+    caffe_list = list(db.caffe.find({}, {'_id': False}))
+    #
+    return render_template('index.html', caffe_list=caffe_list)
 
 @app.route("/caffe", methods=["GET"])
 def caffe_get():
