@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4c371fd-713a-48f3-bd3b-479ff2cd6c0a" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/mini.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mini.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +94,7 @@
       <workItem from="1646618022505" duration="6589000" />
       <workItem from="1646638707340" duration="127000" />
       <workItem from="1646656962999" duration="642000" />
-      <workItem from="1646696177641" duration="3331000" />
+      <workItem from="1646696177641" duration="6630000" />
     </task>
     <servers />
   </component>
