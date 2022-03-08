@@ -16,10 +16,13 @@
         });
 
         function save_list() {
+            let name = $('#cafe-name').val()
+            let address = $('#address').val()
+            let comment = $('#comment').val()
             $.ajax({
                 type: "POST",
                 url: "/",
-                data: {},
+                data: {name_give : name, address_give : address, comment_give : comment},
                 success: function (response) {
                     console.log(response)
                     let rows = response['Gyeonggi']
@@ -144,25 +147,34 @@
             height: 80px;
             background-color: antiquewhite;
         }
+        .modal-name{
+            margin-left: -220px;
+        }
+        .modal-input{
+            border-radius: 10px;
+            border: none;
+            height: 30px;
+            width: 300px;
+        }
     </style>
 </head>
 <body>
     <div class="modal-black">
         <div class="modal-white">
             <div class="cafe-name">
-                <input type="text">
+                <p class="modal-name">카페이름</p>
+                <input type="text" class="modal-input" id="cafe-name">
             </div>
             <div class="cafe-name">
-                <input type="text">
+                <p class="modal-name">카페주소</p>
+                <input type="text" class="modal-input" id="address">
             </div>
             <div class="cafe-name">
-                <input type="text">
+                <p class="modal-name">코멘트</p>
+                <textarea id="comment" style="border: none; resize: none; width: 300px; height: 150px; border-radius: 10px"></textarea>
             </div>
             <div class="cafe-name">
-                <textarea></textarea>
-            </div>
-            <div class="cafe-name">
-                <button onclick="save_list()">저장하기</button>
+                <button style="margin-top: 120px" onclick="save_list()">저장하기</button>
             </div>
         </div>
     </div>
