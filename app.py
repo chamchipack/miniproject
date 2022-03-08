@@ -15,17 +15,10 @@ def home():
     #
     return render_template('index.html', caffe_list=caffe_list)
 
-@app.route("/caffe", methods=["GET"])
-def caffe_get():
-    caffe_list = list(db.caffe.find({}, {'_id': False}))
-    print(caffe_list)
-    return jsonify({'Seoul':caffe_list})
-
-
 @app.route("/Gyeonggi", methods=["GET"])
 def Gyeonggi_get():
     Gyeonggi_list = list(db.Gyeonggi.find({}, {'_id': False}))
-    return jsonify({'Gyeonggii':Gyeonggi_list})
+    return jsonify({'Gyeonggi':Gyeonggi_list})
 
 @app.route('/')
 def main():
