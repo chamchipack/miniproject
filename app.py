@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for
 app = Flask(__name__)
 import hashlib
 import requests
-from bs4 import BeautifulSoup
 import certifi
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://test:sparta@cluster0.ikzrb.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=certifi.where())
