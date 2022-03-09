@@ -24,9 +24,14 @@ import hashlib
 def home():
     #
     caffe_list = list(db.caffe.find({}, {'_id': False}))
-
     #
     return render_template('index.html', caffe_list=caffe_list)
+
+@app.route('/',methods=["POST"])
+def logon():
+    id_receive = request.form['id_give']
+    print(id_receive)
+    return render_template('index.html', id_name=id_receive)
 
 #@app.route("/Gyeonggi", methods=["GET"])
 #def Gyeonggi_get():
@@ -91,6 +96,7 @@ def sign_up():
     password_receive = request.form['password_give']
     nickname_receive = request.form['nick_give']
     password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
+    print(password_hash)
     doc = {
         "id": username_receive,                               # 아이디
         "pw": password_hash,                                  # 비밀번호
@@ -150,24 +156,14 @@ def sign_in():
     if result is not None:
         payload = {
          'id': username_receive,
-         'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
+         'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=300)  # 로그인 24시간 유지
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
-        print(token)
-        return jsonify({'result': 'success', 'token': token})
+        print(payload['id'])
+        return jsonify({'result': 'success', 'token': token, 'id' : payload['id']})
     # 찾지 못하면
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
-
-
-
-
-
-
-
-
-
-

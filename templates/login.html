@@ -110,11 +110,20 @@
             password_give: password
         },
         success: function (response) {
-            console.log(response)
-
             if (response['result'] == 'success') {
                 $.cookie('mytoken', response['token'], {path: '/'});
                 window.location.replace("/")
+                console.log(response['id'])
+                $.ajax({
+                    type: "POST",
+                    url : "/",
+                    data : {
+                        id_give : response.id
+                    },
+                    success : function(response){
+                        console.log(response)
+                    }
+                })
             } else {
                 alert(response['msg'])
             }

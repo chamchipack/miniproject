@@ -26,6 +26,7 @@
                 data: {name_give : name, address_give : address, comment_give : comment, url_give : url},
                 success: function (response) {
                     alert(response)
+                    console.log(response)
                     window.location.reload()
                     //let rows = response['Gyeonggi']
                     //for (let i = 0; i < rows.length; i++) {
@@ -227,6 +228,7 @@
             </div>
         </div>
     </div>
+
 <script>
     let update = document.querySelector('.update-btn')
     let modal = document.querySelector('.modal-black')
