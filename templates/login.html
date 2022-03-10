@@ -3,7 +3,7 @@
     <head>
 
         <!-- Webpage Title -->
-        <title>Hello, world!</title>
+        <title>Login</title>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -47,19 +47,43 @@
             }
 
         </script>
-
+    <style>
+    .input{
+        width: 60%;
+    }
+    .control{
+        margin-left: -100px;
+    }
+    .container{
+        background:#eee;
+        border-radius: 20px;
+        width: 500px;
+        height: 500px;
+        padding-top: 30px;
+    }
+    #another{
+        margin-top: 50px;
+    }
+    .section{
+        background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.3)),url("https://imgorg.catch.co.kr/job/catchapply/main/catchcafe/CAFE_P-1-1.jpg");
+        height: 1080px;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
     </head>
     <body>
         <div class="section has-text-centered">
-            <h1 class="title">로그인 페이지</h1>
-            <div class="container" style="width:60%">
+
+            <div class="container">
+                <h1 class="title">로그인 페이지</h1>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="userid">ID</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
+                                <h4>아이디</h4>
                                 <input type="text" class="input" id="input-username" aria-describedby="emailHelp"
                                        placeholder="My ID">
                             </div>
@@ -68,11 +92,11 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="userpw">PW</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <div class="control">
+                            <div class="control" id="another">
+                                <h4>비밀번호</h4>
                                 <input type="password" class="input" id="input-password" placeholder="My Password">
                             </div>
                         </div>

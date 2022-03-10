@@ -9,12 +9,9 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
-    <title>Title</title>
+    <title>Cafe for developer</title>
     <script>
-        $(document).ready(function () {
-
-        });
-
+        // 카페 등록하기 기능
         function save_list() {
             let name = $('#cafe-name').val()
             let address = $('#address').val()
@@ -28,26 +25,6 @@
                     alert(response)
                     console.log(response)
                     window.location.reload()
-                    //let rows = response['Gyeonggi']
-                    //for (let i = 0; i < rows.length; i++) {
-                    //    let name = rows[i]['name']
-                    //    let score = rows[i]['score']
-                    //    let add = rows[i]['add']
-                    //    let comment = rows[i]['comment']
-                    //    let img = rows[i]['img']
-
-                    //    let temp_html = `<div class="card">
-                    //                        <img src=${img}
-                    //                             class="card-img-top" alt="...">
-                    //                        <div class="card-body">
-                    //                            <h4 class="card-text">${name}</h4>
-                    //                            <p class="card-text">${add}</p>
-                    //                            <p class="card-text">${comment}</p>
-                    //                        </div>
-                     //                      </div>`
-                      //  $('#cards-box').append(temp_html)
-
-                   // }
                 }
             })
         }
@@ -117,7 +94,6 @@
         .bottom-box{
             width: 100%;
             height: 1000px;
-            background-color: aliceblue;
         }
         .bottom-box-inner{
             width: 100%;
@@ -201,7 +177,7 @@
             </div>
         </div>
         <div class="banner-box">
-            <div class="banner-inner">
+            <div class="banner-inner">f
                 <div class="banner-write"><p class="banner-word">카페 For 개발자</p></div>
             </div>
         </div>
@@ -214,14 +190,13 @@
     <div class="bottom-box">
         <div class="bottom-box-inner">
             <div class="row row-cols-1 row-cols-md-4 g-1" id="cards-box">
-                {% for cafe in caffe_list %}
+                {% for caffe in caffe_list %}
                 <div class="card">
-                    <img src={{ cafe.img }}
-                         class="card-img-top" alt="...">
+                    <img src={{ caffe.img }} class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h4 class="card-text">{{ cafe.name }}</h4>
-                        <p class="card-text">{{ cafe.add }}</p>
-                        <p class="card-text">{{ cafe.comment }}</p>
+                        <h4 class="card-text card-name" id="card-name">{{ caffe.name }}</h4>
+                        <p class="card-text">{{ caffe.add }}</p>
+                        <p class="card-text">{{ caffe.comment }}</p>
                     </div>
                 </div>
                 {% endfor %}
@@ -229,7 +204,8 @@
         </div>
     </div>
 
-<script>
+<script async>
+    // 카페 등록하기 모달창 기능
     let update = document.querySelector('.update-btn')
     let modal = document.querySelector('.modal-black')
     update.addEventListener('click',function(){

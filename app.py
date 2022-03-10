@@ -19,25 +19,21 @@ import datetime
 # 그렇지 않으면, 개발자(=나)가 회원들의 비밀번호를 볼 수 있으니까요.^^;
 import hashlib
 
-@app.route('/')
+@app.route('/') #JINJA2로 카페 리스트 출력
 def home():
-    #
     caffe_list = list(db.caffe.find({}, {'_id': False}))
-    #
     return render_template('index.html', caffe_list=caffe_list)
 
-@app.route('/',methods=["POST"])
+@app.route('/Modal',methods=["POST"])
 def logon():
-    id_receive = request.form['id_give']
-    print(id_receive)
-    return render_template('index.html', id_name=id_receive)
+    name_receive = request.form['name_give']
+    print(name_receive)
+    thing = db.caffe.find_one({'name':name_receive},{'_id':False})
+    print(thing)
+    return jsonify({'result': thing})
 
-#@app.route("/Gyeonggi", methods=["GET"])
-#def Gyeonggi_get():
-#    Gyeonggi_list = list(db.Gyeonggi.find({}, {'_id': False}))
-#    return jsonify({'Gyeonggi':Gyeonggi_list})
 
-@app.route("/Gyeonggi", methods=["POST"])
+@app.route("/Gyeonggi", methods=["POST"]) # 카페등록하기 기능
 def Gyeonggi_post():
     name_receive = request.form['name_give']
     address_receive = request.form['address_give']
@@ -69,7 +65,7 @@ def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
-@app.route('/api/register', methods=['POST'])
+@app.route('/api/register', methods=['POST']) # 회원가입 기능
 def api_register():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
@@ -81,7 +77,7 @@ def api_register():
 
     return jsonify({'result': 'success'})
 
-@app.route('/sign_up/check_dup', methods=['POST'])
+@app.route('/sign_up/check_dup', methods=['POST']) # 회원가입 아이디 중복확인기능
 def check_dup():
     username_receive = request.form['username_give']
     print(username_receive)
@@ -89,7 +85,7 @@ def check_dup():
     print(exists)
     return jsonify({'result': 'success', 'exists': exists})
 
-@app.route('/sign_up/save', methods=['POST'])
+@app.route('/sign_up/save', methods=['POST']) # 회원가입 저장기
 def sign_up():
     username_receive = request.form['username_give']
     password_receive = request.form['password_give']
@@ -103,16 +99,6 @@ def sign_up():
     }
     db.user.insert_one(doc)
     return jsonify({'result': 'success'})
-
-#################################
-##  HTML을 주는 부분             ##
-#################################
-
-
-#################################
-##  로그인을 위한 API            ##
-#################################
-
 
 # [로그인 API]
 # id, pw를 받아서 맞춰보고, 토큰을 만들어 발급합니다.
@@ -144,7 +130,7 @@ def api_valid():
     except jwt.exceptions.DecodeError:
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
-@app.route('/sign_in', methods=['POST'])
+@app.route('/sign_in', methods=['POST']) # 로그인 기능
 def sign_in():
     # 로그인
     username_receive = request.form['username_give']

@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <title>Title</title>
+    <title>Register</title>
     <style>
         body{
             background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url("https://www.jeongdong.or.kr/static/portal/img/HKPU_04_04_pic1.jpg");
@@ -22,8 +22,8 @@
         }
         .main-box-inner{
             width: 400px;
-            height: 500px;
-            background-color: #eee;
+            height: 700px;
+            background-color:#eee;
             margin: 0 auto;
             margin-top: 100px;
             padding: 10px;
@@ -36,24 +36,27 @@
         }
         .id-box{
             width: 100%;
-            height: 100px;
+            height: 150px;
         }
         .pw-box{
            width: 100%;
-            height: 100px;
+            height: 150px;
         }
         .nick-box{
             width: 100%;
-            height: 100px;
+            height: 150px;
         }
         .ok-box{
             float: right;
-            margin-top: 120px;
+            margin-top: 20px;
         }
         input{
             border-radius: 10px;
-            border: none;
+            border: 1px gray solid;
             height: 40px;
+        }
+        .input{
+            width:250px;
         }
         .is-danger{
             color:red;
@@ -73,22 +76,22 @@
                 <div class="id-box">
                     <p>아이디</p>
                     <input type="text" placeholder="아이디를 입력하세요" id="id-box">
-                    <button onclick="check_dup()">중복확인</button>
+                    <button style="border: none;" onclick="check_dup()">중복확인</button>
                     <p id="help-id"></p>
                 </div>
                 <div class="pw-box">
                     <p>비밀번호</p>
-                    <input type="password" placeholder="비밀번호를 입력하세요" id="pw-box">
+                    <input class="input" type="password" placeholder="비밀번호를 입력하세요" id="pw-box">
                     <p id="help-password"></p>
                 </div>
                 <div class="pw-box">
                     <p>비밀번호확인</p>
-                    <input type="password" placeholder="비밀번호를 입력하세요" id="pw-box2">
+                    <input class="input" type="password" placeholder="비밀번호를 입력하세요" id="pw-box2">
                     <p id="help-password2"></p>
                 </div>
                 <div class="nick-box">
                     <p>닉네임</p>
-                    <input type="text" placeholder="닉네임을 입력하세요" id="nick-box">
+                    <input class="input" type="text" placeholder="닉네임을 입력하세요" id="nick-box">
                 </div>
                 <div class="ok-box">
                     <button onclick="sign_up()" type="button" class="btn btn-outline-primary">가입하기</button>
